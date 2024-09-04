@@ -20,9 +20,13 @@ public class App
         Vehicle veh2 = context.getBean("fordVehicle", Vehicle.class);
         Vehicle veh3 = context.getBean("citroenVehicle", Vehicle.class);
         
+        Vehicle primaryVeh = context.getBean(Vehicle.class);
+        
         System.out.println("Vehicle 1 name from Spring Context: " + veh1.getName());
         System.out.println("Vehicle 2 name from Spring Context: " + veh2.getName());
         System.out.println("Vehicle 3 name from Spring Context: " + veh3.getName());
+        
+        System.out.println("The primary vehicle is: " + primaryVeh.getName());
         
         context.close();
     }
