@@ -8,21 +8,21 @@ import com.crisgeproject.beans.Vehicle;
 @Configuration
 public class ProjectConfig {
 
-	@Bean
+	@Bean(name="kiaVehicle")
 	Vehicle vehicle1() {
 		var veh = new Vehicle();
 		veh.setName("KIA Soul");
 		return veh;
 	}
 	
-	@Bean
+	@Bean(value="fordVehicle")
 	Vehicle vehicle2() {
 		var veh = new Vehicle();
 		veh.setName("Ford");
 		return veh;
 	}
 	
-	@Bean
+	@Bean("citroenVehicle")
 	Vehicle vehicle3() {
 		var veh = new Vehicle();
 		veh.setName("Citroen");

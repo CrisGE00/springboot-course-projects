@@ -16,9 +16,9 @@ public class App
     	// Initializes Spring IOC Container
         var context = new AnnotationConfigApplicationContext(ProjectConfig.class);
         
-        Vehicle veh1 = context.getBean("vehicle1", Vehicle.class);
-        Vehicle veh2 = context.getBean("vehicle2", Vehicle.class);
-        Vehicle veh3 = context.getBean("vehicle3", Vehicle.class);
+        Vehicle veh1 = context.getBean("kiaVehicle", Vehicle.class);
+        Vehicle veh2 = context.getBean("fordVehicle", Vehicle.class);
+        Vehicle veh3 = context.getBean("citroenVehicle", Vehicle.class);
         
         System.out.println("Vehicle 1 name from Spring Context: " + veh1.getName());
         System.out.println("Vehicle 2 name from Spring Context: " + veh2.getName());
