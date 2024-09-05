@@ -2,6 +2,8 @@ package com.crisgeproject.beans;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.annotation.PostConstruct;
+
 @Component
 public class Vehicle {
 
@@ -13,6 +15,11 @@ public class Vehicle {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	@PostConstruct
+	public void initialize() {
+		this.name = "Ford";
 	}
 	
 	public void printHello(){
