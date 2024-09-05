@@ -1,20 +1,19 @@
 package com.crisgeproject.config;
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import com.crisgeproject.beans.Person;
-import com.crisgeproject.beans.Vehicle;
 
 @Configuration
+@ComponentScan(basePackages = "com.crisgeproject.beans")
 public class ProjectConfig {
 
-	@Bean
+	/** @Bean
 	public Vehicle vehicle() {
 		Vehicle vehicle = new Vehicle();
 		vehicle.setName("toyota");
 		return vehicle;
-	}
+	} **/
 	
 	/** Wiring without method parameters
 	
@@ -26,12 +25,12 @@ public class ProjectConfig {
 		return person;
 	} **/
 	
-	// Wiring with method parameters
+	/** Wiring with method parameters
 	@Bean
 	public Person person(Vehicle vehicle) {
 		Person person = new Person();
 		person.setName("Lucy");
 		person.setVehicle(vehicle);
 		return person;
-	}
+	} **/
 }
