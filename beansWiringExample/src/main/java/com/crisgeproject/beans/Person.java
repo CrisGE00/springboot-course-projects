@@ -6,8 +6,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class Person {
 
-	public Person() {
+	@Autowired
+	public Person(Vehicle vehicle) {
 		System.out.println("Person bean created by spring");
+		this.vehicle = vehicle;
 	}
 	
 	private String name = "Lucy";
@@ -27,7 +29,7 @@ public class Person {
 		return vehicle;
 	}
 	
-	@Autowired
+	// @Autowired
 	public void setVehicle(Vehicle vehicle) {
 		this.vehicle = vehicle;
 	}
