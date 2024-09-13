@@ -21,9 +21,14 @@ public class ProjectSecurityConfig {
                 .requestMatchers("/saveMsg").permitAll()
                 .requestMatchers("/courses").permitAll()
                 .requestMatchers("/about").permitAll()
-                .requestMatchers("/assets/**").permitAll())
-                .formLogin(Customizer.withDefaults())
-                .httpBasic(Customizer.withDefaults());
+                .requestMatchers("/assets/**").permitAll()
+                .requestMatchers("/login").permitAll()
+                .requestMatchers("/dashboard").authenticated())
+		        .formLogin(loginConfigurer -> loginConfigurer.loginPage("/login")
+		                .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll())
+		        .logout(logoutConfigurer -> logoutConfigurer.logoutSuccessUrl("/login?logout=true")
+		                .invalidateHttpSession(true).permitAll())
+		        .httpBasic(Customizer.withDefaults());
 
         return http.build();
 
