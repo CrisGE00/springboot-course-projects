@@ -7,7 +7,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.crisgeproject.schoolApp.model.Contact;
 import com.crisgeproject.schoolApp.service.ContactService;
@@ -39,6 +38,8 @@ public class ContactController {
 			return "contact.html";
 		}
 		contactService.saveMessageDetails(contact);
+		contactService.setCounter(contactService.getCounter()+1);
+		log.info("Number of times contact info is submitted: "+contactService.getCounter());
 		return "redirect:/contact";
 	}
 	
