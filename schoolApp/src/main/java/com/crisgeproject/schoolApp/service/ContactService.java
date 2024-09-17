@@ -1,36 +1,37 @@
 package com.crisgeproject.schoolApp.service;
 
-import org.springframework.stereotype.Service;
-import org.springframework.web.context.annotation.ApplicationScope;
+import java.time.LocalDateTime;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.crisgeproject.schoolApp.constants.ScholAppConstants;
 import com.crisgeproject.schoolApp.model.Contact;
+import com.crisgeproject.schoolApp.repository.ContactRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-@ApplicationScope
 public class ContactService {
 	
-	private int counter = 0;
+	@Autowired
+    private ContactRepository contactRepository;
 	
 	public ContactService() {
-		System.out.println("Contact Service bean initialized");
+		log.info("Contact Service bean initialized");
 	}
 	
 	public boolean saveMessageDetails(Contact contact) {
-		boolean isSaved = true;
-		log.info(contact.toString());
+		boolean isSaved = false;
+        contact.setStatus(ScholAppConstants.OPEN);
+        contact.setCreatedBy(ScholAppConstants.ANONYMOUS);
+        contact.setCreatedAt(LocalDateTime.now());
+        int result = contactRepository.saveContactMsg(contact);
+        if(result>0) {
+            isSaved = true;
+        }
 		return isSaved;
 	}
 
-	public int getCounter() {
-		return counter;
-	}
-
-	public void setCounter(int counter) {
-		this.counter = counter;
-	}
-	
-	
 }
