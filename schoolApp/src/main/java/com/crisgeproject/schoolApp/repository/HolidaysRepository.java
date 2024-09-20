@@ -20,7 +20,7 @@ public class HolidaysRepository {
     }
 
     public List<Holiday> findAllHolidays() {
-        String sql = "SELECT * FROM holidays";
+        String sql = "select * from schoolapp.holidays";
         var rowMapper = BeanPropertyRowMapper.newInstance(Holiday.class);
         return jdbcTemplate.query(sql, rowMapper);
     }
